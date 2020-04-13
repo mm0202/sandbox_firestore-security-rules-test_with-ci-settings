@@ -28,8 +28,6 @@ jobs:
 
       - run: yarn install
       - run: yarn global add firebase-tools
-
-      - run: firebase setup:emulators:firestore
       - run: yarn run emu:start:firestore &
       - name: エミュレータの起動待機...
         run: sleep 3
