@@ -9,6 +9,8 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: apt-get update -y
+            - run: apt-get install -y default-jdk
             - run: yarn install
             - run: yarn global add firebase-tools
             - run: yarn run setup:emu:firestore
