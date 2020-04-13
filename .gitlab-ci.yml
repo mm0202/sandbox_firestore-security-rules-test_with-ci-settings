@@ -2,11 +2,9 @@ stages:
   - test
 
 test:
-  image: node:8-slim
+  image: circleci/node-browsers
   stage: test
   script:
-    - apt-get update -y
-    - apt-get install -y default-jdk
     - yarn install
     - yarn global add firebase-tools
     - firebase setup:emulators:firestore
