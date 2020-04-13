@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn install
-      - run: yarn install -g firebase-tools
+      - run: yarn global add firebase-tools
 
       - run: firebase setup:emulators:firestore
       - run: yarn run emu:start:firestore &

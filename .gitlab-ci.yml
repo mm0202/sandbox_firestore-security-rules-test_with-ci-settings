@@ -6,7 +6,7 @@ test:
   stage: test
   script:
     - yarn install
-    - yarn install -g firebase-tools
+    - yarn global add firebase-tools
     - firebase setup:emulators:firestore
     - yarn run emu:start:firestore &
     - sleep 3
