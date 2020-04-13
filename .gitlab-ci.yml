@@ -1,0 +1,14 @@
+stages:
+  - test
+
+test:
+  image: node
+  stage: test
+  script:
+    - yarn install
+    - yarn install -g firebase-tools
+    - firebase setup:emulators:firestore
+    - yarn run emu:start:firestore &
+    - sleep 3
+    - yarn run ci-test
+
