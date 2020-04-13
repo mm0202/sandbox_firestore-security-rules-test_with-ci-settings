@@ -5,6 +5,7 @@ test:
   image: node:8-slim
   stage: test
   script:
+    - apt-get update -y && apt-get install -y default-jdk
     - yarn install
     - yarn global add firebase-tools
     - firebase setup:emulators:firestore
