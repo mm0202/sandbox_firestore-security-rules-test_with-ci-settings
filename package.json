@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
+    "setup:emu:firestore": "firebase setup:emulators:firestore",
     "emu:start:firestore": "firebase emulators:start --only firestore",
     "test": "jest",
     "test-watch": "jest --watch",
