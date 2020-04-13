@@ -5,12 +5,10 @@ jobs:
       - image: circleci/node:lts-browsers
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn install
-            - run: yarn global add firebase-tools
-            - run: yarn run setup:emu:firestore
-            - run: yarn run emu:start:firestore & sleep 5 & yarn run ci-test
+      - run: yarn install
+      - run: yarn global add firebase-tools
+      - run: yarn run setup:emu:firestore
+      - run: yarn run emu:start:firestore & sleep 5 & yarn run ci-test
 workflows:
   test:
     jobs:
