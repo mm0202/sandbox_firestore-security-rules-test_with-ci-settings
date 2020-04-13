@@ -30,7 +30,7 @@ jobs:
       - run: yarn global add firebase-tools
       - run: yarn run emu:start:firestore &
       - name: エミュレータの起動待機...
-        run: sleep 3
+        run: sleep 5
 
       - run: yarn run ci-test
         env:
