@@ -1,4 +1,4 @@
-name: CI
+name: test
 
 on: [push]
 
@@ -17,12 +17,23 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm install -g firebase-tools
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install
+      - run: yarn install -g firebase-tools
+
       - run: firebase setup:emulators:firestore
-      - run: npm run emu:start:firestore &
+      - run: yarn run emu:start:firestore &
       - name: エミュレータの起動待機...
         run: sleep 3
-      - run: npm run ci-test
+
+      - run: yarn run ci-test
         env:
           CI: true
