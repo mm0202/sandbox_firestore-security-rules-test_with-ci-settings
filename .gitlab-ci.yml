@@ -7,7 +7,7 @@ test:
   script:
     - yarn install
     - yarn global add firebase-tools
-    - firebase setup:emulators:firestore
+    - yarn run setup:emu:firestore
     - yarn run emu:start:firestore &
     - sleep 3
     - yarn run ci-test
