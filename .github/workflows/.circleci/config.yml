@@ -1,0 +1,20 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: yarn install
+            - run: yarn global add firebase-tools
+            - run: yarn run emu:start:firestore &
+            - run: sleep 5
+            - run: yarn run ci-test
+workflows:
+  test:
+    jobs:
+      - test
