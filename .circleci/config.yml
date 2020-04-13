@@ -1,10 +1,8 @@
 version: 2.1
-orbs:
-  node: circleci/node:lts-browsers
 jobs:
   test:
-    executor:
-      name: node/default
+    docker:
+      - image: circleci/node:lts-browsers
     steps:
       - checkout
       - node/with-cache:
